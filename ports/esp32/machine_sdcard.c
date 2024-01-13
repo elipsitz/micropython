@@ -294,6 +294,15 @@ STATIC mp_obj_t machine_sdcard_make_new(const mp_obj_type_t *type, size_t n_args
         DEBUG_printf("  Setting up SDMMC slot configuration");
         sdmmc_slot_config_t slot_config = SDMMC_SLOT_CONFIG_DEFAULT();
 
+        // configured for gamebub handheld rev a
+        slot_config.clk = GPIO_NUM_45;
+        slot_config.cmd = GPIO_NUM_48;
+        slot_config.d0 = GPIO_NUM_35;
+        slot_config.d1 = GPIO_NUM_36;
+        slot_config.d2 = GPIO_NUM_21;
+        slot_config.d3 = GPIO_NUM_47;
+
+
         // Stronger external pull-ups are still needed but apparently
         // it is a good idea to set the internal pull-ups anyway.
         // slot_config.flags = SDMMC_SLOT_FLAG_INTERNAL_PULLUP;
